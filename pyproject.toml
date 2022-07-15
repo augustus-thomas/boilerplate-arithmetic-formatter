@@ -2,7 +2,7 @@
 name = "arithmetic_arranger"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Augustus Thomas"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
