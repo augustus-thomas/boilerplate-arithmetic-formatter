@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "fcc-arithmetic-formatter"
+name = "arithmetic_arranger"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
