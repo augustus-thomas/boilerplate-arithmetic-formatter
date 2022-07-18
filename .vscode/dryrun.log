@@ -1,7 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/gmac/arithmetic-formatter'
- 
-make: *** No targets.  Stop.
-
 make: Leaving directory `/Users/gmac/arithmetic-formatter'
  
+Makefile:1: *** missing separator.  Stop.
+
