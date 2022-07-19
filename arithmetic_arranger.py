@@ -24,7 +24,12 @@ def arithmetic_arranger(problems, isSolved):
         operands.append(new_operand)
 
     ## Note: Operands becomes a list of lists (tuple?) we need to handle this
-
+    decompressed_operands = []
+    i = 0
+    while i < len(operands):
+        j = 0
+        while j < len(operands[i]):
+            decompressed_operands.append(operands[i][j])
 
 
 
@@ -39,7 +44,7 @@ def arithmetic_arranger(problems, isSolved):
         raise Exception("Error: Too many problems.")
     
     for x in range(operators):
-        if x is not "-" and x is not "+":
+        if (x != "-") and (x != "+"):
             raise Exception("Error: Operator must be '+' or '-'.")
             break
     
