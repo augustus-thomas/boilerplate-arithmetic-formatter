@@ -14,11 +14,11 @@ def arithmetic_arranger(problems, *isSolved):
     operators = []
     operands = []
     for x in problems: 
-        new_operator = re.findall(r'\d+\s(\W)\s\d+', x)
-        new_operand = re.findall(r'\d+', x)
+        new_operator = re.findall(r'\S+\s(\S)\s\S+', x)
+        new_operand = re.findall(r'\d\S*', x)
         operators.append(new_operator)
         operands.append(new_operand)
-    print("operands and operators", operands, operators)
+    print("operands and operators: ", operands, operators)
     # Extracting operands lists into one list
     decompressed_operands = []
     i = 0
@@ -36,16 +36,17 @@ def arithmetic_arranger(problems, *isSolved):
 
 
     # Checking and passing  provisioned errors
-    if (n > 5):
+    if (len(operators) > 5):
         return ("Error: Too many problems.")
     
     for x in operators:
-        if ((x != "-") and (x != "+")):
+        if ((x != ["-"]) and (x != ["+"])):
+            print(type(x))
             return ("Error: Operator must be '+' or '-'.")
 
     
     for y in decompressed_operands:
-        if (not isdigit(y)):
+        if (not str(y).isdigit()):
             return ("Error: Numbers must only contain digits.")
 
     for y in decompressed_operands:
