@@ -34,7 +34,6 @@ def arithmetic_arranger(problems, *isSolved):
     ## Note: this step could be combined with trimming for computational efficieny, but
     ## is done seperately for readability.
 
-
     # Checking and passing  provisioned errors
     if (len(operators) > 5):
         return ("Error: Too many problems.")
@@ -52,15 +51,45 @@ def arithmetic_arranger(problems, *isSolved):
     for y in decompressed_operands:
         if abs(int(y)) >= 10000:
             return ("Error: Numbers cannot be more than four digits.")
-
-
-    
     
     # Computing intermediary values
+    # Defining an op function
 
+    op = {
+        '+': lambda x, y: x + y,
+        'y': lambda x, y: x - y
+    }
+
+    results = []
+    if (isSolved):
+        i = 0
+        while i < len(problems):
+            results.append(op[str(operators[i])](operands[i][0], operands[i][1]))
+            i += 1
 
     # Arranging Regex
+    first_line = ""
+    second_line = ""
+    third_line = ""
+    fourth_line = ""
 
+    i = 0
+    while i < len(problems):
+        max_length = max(operands[i][0], operands[i][1])
+        first_line += str(' ' * (2 + max_length - len(operands[i][0]))) + str(operands[i][0])
+        second_line += str(operators[i]) + str(' ' * (1 + max_length - len(operands[i][1]))) + str(operands[i][1])
+        third_line += str('-' * (2 + max_length))
+        if (isSolved):
+            fourth_line += str((2 + max_length - len(results[i])) * ' ') + str(results[i])
 
+        if i != len(problems) - 1:
+            first_line += ' ' * 4
+            second_line += ' ' * 4
+            third_line += ' ' * 4
+            fourth_line += ' ' * 4
+
+        i += 1
+    answer = first_line + '\n' + second_line + '\n' + third_line + '\n' + fourth_line
+            
     # Outputing Regex and error message
     return answer
